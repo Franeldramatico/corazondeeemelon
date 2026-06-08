@@ -444,12 +444,12 @@
         camera.position.set(0, 0.15, 5.8);
 
         const renderer = new THREE.WebGLRenderer({ 
-            antialias: true, 
+            antialias: false, 
             alpha: false, 
             powerPreference: 'high-performance' 
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); // menor resolución para más FPS
+        renderer.setPixelRatio(1); 
         renderer.setClearColor(0x020010, 1);
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         container.appendChild(renderer.domElement);
@@ -705,32 +705,32 @@
 
         const heartGroup = new THREE.Group();
 
-        // Capa exterior (reducida a 60k objetivo)
-        const heartData = sampleHeartSurface(60000, false);
+        // Capa exterior (reducida a 15k objetivo)
+        const heartData = sampleHeartSurface(15000, false);
         const heartGeometry = new THREE.BufferGeometry();
         heartGeometry.setAttribute('position', new THREE.BufferAttribute(heartData.positions, 3));
         heartGeometry.setAttribute('color', new THREE.BufferAttribute(heartData.colors, 3));
         const heartMaterial = new THREE.PointsMaterial({
-            size: 0.032, map: glowTexMain, blending: THREE.AdditiveBlending,
+            size: 0.04, map: glowTexMain, blending: THREE.AdditiveBlending,
             depthWrite: false, depthTest: true, transparent: true,
             vertexColors: true, sizeAttenuation: true, opacity: 0.9,
         });
         heartGroup.add(new THREE.Points(heartGeometry, heartMaterial));
 
-        // Capa interior (reducida a 15k)
-        const innerData = sampleHeartSurface(15000, true);
+        // Capa interior (reducida a 4k)
+        const innerData = sampleHeartSurface(4000, true);
         const innerGeometry = new THREE.BufferGeometry();
         innerGeometry.setAttribute('position', new THREE.BufferAttribute(innerData.positions, 3));
         innerGeometry.setAttribute('color', new THREE.BufferAttribute(innerData.colors, 3));
         const innerMaterial = new THREE.PointsMaterial({
-            size: 0.05, map: glowTexSoft, blending: THREE.AdditiveBlending,
+            size: 0.06, map: glowTexSoft, blending: THREE.AdditiveBlending,
             depthWrite: false, depthTest: true, transparent: true,
             vertexColors: true, sizeAttenuation: true, opacity: 0.45,
         });
         heartGroup.add(new THREE.Points(innerGeometry, innerMaterial));
 
-        // Destellos (reducidos a 1500)
-        const sparkleCount = 1500;
+        // Destellos (reducidos a 400)
+        const sparkleCount = 400;
         const sparklePosArr = [], sparkleColArr = [];
         for (let i = 0; i < sparkleCount; i++) {
             const idx = Math.floor(Math.random() * heartData.count);
@@ -743,7 +743,7 @@
         sparkleGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(sparklePosArr), 3));
         sparkleGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(sparkleColArr), 3));
         const sparkleMat = new THREE.PointsMaterial({
-            size: 0.065, map: glowTexSpark, blending: THREE.AdditiveBlending,
+            size: 0.08, map: glowTexSpark, blending: THREE.AdditiveBlending,
             depthWrite: false, depthTest: true, transparent: true,
             vertexColors: true, sizeAttenuation: true, opacity: 0.85,
         });
@@ -751,25 +751,21 @@
         scene.add(heartGroup);
 
         // ============ POLVO ORBITAL (reducido) ============
-        const orbitDustCount = 2500;
-        const orbitPosArr = [], orbitColArr = [], orbitDataArr = [];
+        const orbitDustCount = 800;
+        const orbitPosArr = [], orbitColArr = [];
         for (let i = 0; i < orbitDustCount; i++) {
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.random() * Math.PI;
             const radius = 1.4 + Math.random() * 3.0;
-            const ax = Math.cos(theta) * Math.sin(phi) * radius;
-            const ay = Math.cos(phi) * radius * 0.8;
-            const az = Math.sin(theta) * Math.sin(phi) * radius;
-            orbitPosArr.push(ax, ay, az);
+            orbitPosArr.push(Math.cos(theta) * Math.sin(phi) * radius, Math.cos(phi) * radius * 0.8, Math.sin(theta) * Math.sin(phi) * radius);
             const bright = 0.2 + Math.random() * 0.6;
             orbitColArr.push(bright * 0.6, bright * 0.1, bright * 0.55);
-            orbitDataArr.push({ baseY: ay, speed: 0.05 + Math.random()*0.45, amplitude: 0.25 + Math.random()*1.0, phase: Math.random()*Math.PI*2 });
         }
         const orbitGeom = new THREE.BufferGeometry();
         orbitGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPosArr), 3));
         orbitGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(orbitColArr), 3));
         const orbitMat = new THREE.PointsMaterial({
-            size: 0.022, map: glowTexSoft, blending: THREE.AdditiveBlending,
+            size: 0.025, map: glowTexSoft, blending: THREE.AdditiveBlending,
             depthWrite: false, depthTest: false, transparent: true,
             vertexColors: true, sizeAttenuation: true, opacity: 0.55,
         });
@@ -778,7 +774,7 @@
         scene.add(orbitPoints);
 
         // ============ PARTÍCULAS LEJANAS (reducido) ============
-        const farDustCount = 1200;
+        const farDustCount = 400;
         const farDustPosArr = [], farDustColArr = [];
         for (let i = 0; i < farDustCount; i++) {
             const th = Math.random() * Math.PI * 2;
@@ -792,7 +788,7 @@
         farGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(farDustPosArr), 3));
         farGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(farDustColArr), 3));
         const farMat = new THREE.PointsMaterial({
-            size: 0.028, map: glowTexSoft, blending: THREE.AdditiveBlending,
+            size: 0.035, map: glowTexSoft, blending: THREE.AdditiveBlending,
             depthWrite: false, depthTest: false, transparent: true,
             vertexColors: true, sizeAttenuation: true, opacity: 0.4,
         });
@@ -832,12 +828,8 @@
             coreGlowMat.uniforms.uTime.value = timeAccum;
             coreGlow.scale.setScalar(1 + Math.sin(timeAccum * 0.7) * 0.06);
 
-            const oPos = orbitGeom.attributes.position.array;
-            for (let i = 0; i < orbitDustCount; i++) {
-                const d = orbitDataArr[i];
-                oPos[i*3 + 1] = d.baseY + Math.sin(timeAccum * d.speed + d.phase) * d.amplitude;
-            }
-            orbitGeom.attributes.position.needsUpdate = true;
+            orbitPoints.rotation.y = timeAccum * 0.12;
+            orbitPoints.rotation.z = Math.sin(timeAccum * 0.1) * 0.05;
 
             farPoints.rotation.y = timeAccum * 0.018;
             skySphere.rotation.y = timeAccum * 0.008;
