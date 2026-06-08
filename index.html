@@ -6,401 +6,105 @@
     <title>Te amo mucho araxnita</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path fill='%23c026d3' d='M50 85L20 50C10 40 10 25 20 15s25-5 30 10c5-15 20-20 30-10s10 25 0 35L50 85z'/></svg>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Raleway:wght@300;500&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg: #020010;
-            --purple-deep: #2e004f;
-            --purple-mid: #6d28d9;
-            --purple-light: #a78bfa;
-            --magenta: #c026d3;
-            --pink: #e879f9;
-            --pink-light: #f5d0fe;
-            --lavender: #c4b5fd;
-            --deep-violet: #1a0030;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #000005;
-            overflow: hidden;
-            font-family: 'Raleway', sans-serif;
-            height: 100vh;
-            width: 100vw;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            cursor: grab;
-        }
-        body:active {
-            cursor: grabbing;
-        }
-
-        #three-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        #three-container canvas {
-            display: block;
-            outline: none;
-        }
-
-        .bg-particles-layer {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-            opacity: 0.45;
-        }
-        .bg-dot {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatUpward linear infinite;
-            opacity: 0;
-        }
-        @keyframes floatUpward {
-            0% {
-                transform: translateY(105vh) scale(0);
-                opacity: 0;
-            }
-            8% {
-                opacity: 0.9;
-            }
-            85% {
-                opacity: 0.2;
-            }
-            100% {
-                transform: translateY(-12vh) scale(1.4);
-                opacity: 0;
-            }
-        }
-
-        .ui-overlay {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            padding-bottom: clamp(28px, 4.5vh, 55px);
-            pointer-events: none;
-        }
-
-        .instruction-text {
-            color: rgba(245, 208, 254, 0.75);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            animation: pulseText 3s infinite;
-        }
-        @keyframes pulseText {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #020008; overflow: hidden; font-family: 'Raleway', sans-serif; height: 100vh; width: 100vw; user-select: none; }
+        #three-container { position: fixed; inset: 0; z-index: 1; }
+        .ui-overlay { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-bottom: 30px; pointer-events: none; }
         .love-text {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2.6rem, 6.5vw, 5.2rem);
-            color: #fdf2ff;
-            text-shadow: 0 0 20px rgba(216, 70, 239, 0.8), 0 0 40px rgba(147, 51, 234, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7);
-            letter-spacing: 0.04em;
-            text-align: center;
-            line-height: 1.15;
-            margin-bottom: clamp(16px, 2.2vh, 26px);
-            pointer-events: none;
-            padding: 0 20px;
-        }
-
-        .btn-open-letter {
-            pointer-events: all;
-            cursor: pointer;
-            position: relative;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 500;
-            font-size: clamp(1rem, 1.6vw, 1.2rem);
-            letter-spacing: 0.08em;
+            font-size: clamp(2rem, 5vw, 4rem);
             color: #fff;
-            background: linear-gradient(135deg, #5b21b6 0%, #a855f7 50%, #5b21b6 100%);
-            background-size: 200% 200%;
-            border: 1px solid rgba(196, 181, 253, 0.5);
-            padding: clamp(14px, 2vh, 18px) clamp(32px, 5vw, 48px);
-            border-radius: 50px;
-            box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), 0 10px 20px rgba(0, 0, 0, 0.5);
-            transition: all 0.4s ease;
-            animation: gradientShift 5s ease infinite;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .btn-open-letter i { font-size: 1.1em; color: #fdf2ff; }
-        .btn-open-letter:hover {
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 0 45px rgba(147, 51, 234, 0.8), 0 12px 25px rgba(0, 0, 0, 0.6);
-        }
-        .btn-open-letter:active { transform: scale(0.97); }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .modal-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            background: rgba(2, 0, 8, 0.95);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-        .letter-card {
-            background: #0a001c;
-            border: 1px solid rgba(196, 181, 253, 0.3);
-            border-radius: 24px;
-            padding: clamp(24px, 3.5vw, 40px);
-            max-width: 500px;
-            width: 92%;
+            text-shadow: 0 0 10px rgba(216, 70, 239, 0.8), 0 2px 4px rgba(0,0,0,0.5);
             text-align: center;
-            position: relative;
-            box-shadow: 0 0 60px rgba(124, 58, 237, 0.4);
-            transform: scale(0.9) translateY(20px);
-            transition: transform 0.4s ease, opacity 0.4s ease;
-            opacity: 0;
+            margin-bottom: 20px;
+            padding: 0 10px;
         }
-        .modal-overlay.active .letter-card { transform: scale(1) translateY(0); opacity: 1; }
-        
-        .letter-card::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: 25px;
-            background: linear-gradient(135deg, #7c3aed, #d946ef);
-            z-index: -1;
-            opacity: 0.4;
+        .btn-open-letter {
+            pointer-events: all; cursor: pointer;
+            font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 1rem;
+            color: #fff; background: #7c3aed;
+            border: none; padding: 12px 24px; border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
         }
-
-        .letter-icon-wrap {
-            display: inline-block;
-            font-size: clamp(2.4rem, 5vw, 3.4rem);
-            margin-bottom: 12px;
-            color: #f472b6;
-            filter: drop-shadow(0 0 10px rgba(216, 70, 239, 0.8));
-        }
-        .letter-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 3vw, 2rem);
-            color: #fdf2ff;
-            margin-bottom: 16px;
-            font-weight: 600;
-        }
-        .letter-message {
-            font-family: 'Raleway', sans-serif;
-            font-size: clamp(1rem, 1.6vw, 1.2rem);
-            color: #e2d4f5;
-            line-height: 1.8;
-            font-weight: 300;
-            margin-bottom: 8px;
-        }
-        .letter-message strong { color: #f472b6; font-weight: 500; }
-        .letter-signature {
-            font-family: 'Great Vibes', cursive;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            color: #fdf2ff;
-            margin-top: 20px;
-        }
-        .btn-close-letter {
-            margin-top: 22px;
-            padding: 10px 28px;
-            border-radius: 30px;
-            border: 1px solid rgba(196, 181, 253, 0.4);
-            background: rgba(124, 58, 237, 0.2);
-            color: #e2d4f5;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .btn-close-letter:hover { background: rgba(124, 58, 237, 0.4); color: #fff; }
-
-        @media (max-width: 600px) {
-            .love-text { font-size: 2.2rem; }
-            .btn-open-letter { padding: 12px 26px; font-size: 0.9rem; }
-        }
+        .btn-open-letter:active { transform: scale(0.95); }
+        .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+        .letter-card { background: #110022; border: 1px solid #442266; border-radius: 20px; padding: 30px; max-width: 450px; width: 90%; text-align: center; color: #fff; }
+        .letter-title { font-size: 1.5rem; margin-bottom: 15px; color: #f472b6; }
+        .letter-message { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; font-weight: 300; }
+        .btn-close-letter { margin-top: 15px; padding: 8px 20px; border-radius: 20px; border: 1px solid #664488; background: transparent; color: #fff; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="bg-particles-layer" id="bgParticlesLayer"></div>
     <div id="three-container"></div>
-
     <div class="ui-overlay">
-        <div class="instruction-text">Desliza para girar · Pellizca para zoom</div>
         <h1 class="love-text">Te amo mucho araxnita</h1>
-        <button class="btn-open-letter" id="btnOpenLetter">
-            <i class="fa-solid fa-heart"></i> Abrir carta de aniversario <i class="fa-solid fa-star"></i>
-        </button>
+        <button class="btn-open-letter" id="btnOpenLetter">Abrir carta ❤️</button>
     </div>
-
     <div class="modal-overlay" id="modalOverlay">
         <div class="letter-card">
-            <div class="letter-icon-wrap"><i class="fa-solid fa-heart-circle-plus"></i></div>
             <div class="letter-title">Mi amor, araxnita</div>
-            <p class="letter-message">
-                Este aniversario es <strong>solo el primero</strong> de muchísimos más que viviremos juntos.
-                <br><br>
-                Cada día a tu lado es un regalo, y nuestro amor es tan <strong>especial</strong> que trasciende el tiempo. Habrá más aniversarios, más momentos, más recuerdos… porque lo nuestro es <strong>para siempre</strong>.
-                <br><br>
-                Gracias por ser quien eres y por llenar mi vida de luz.
-            </p>
-            <div class="letter-signature">Con todo mi amor</div>
-            <button class="btn-close-letter" id="btnCloseLetter"><i class="fa-solid fa-xmark"></i> Cerrar carta</button>
+            <p class="letter-message">Este aniversario es solo el primero de muchísimos más juntos. Cada día a tu lado es un regalo.</p>
+            <button class="btn-close-letter" id="btnCloseLetter">Cerrar</button>
         </div>
     </div>
 
     <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
+        { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js", "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/" } }
     </script>
-
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        const bgLayer = document.getElementById('bgParticlesLayer');
-        const bgDotCount = 20; 
-        for (let i = 0; i < bgDotCount; i++) {
-            const dot = document.createElement('div');
-            dot.classList.add('bg-dot');
-            const size = Math.random() * 3 + 1;
-            dot.style.width = size + 'px'; dot.style.height = size + 'px';
-            dot.style.left = Math.random() * 100 + '%';
-            dot.style.animationDuration = Math.random() * 15 + 10 + 's';
-            dot.style.animationDelay = Math.random() * 10 + 's';
-            dot.style.background = ['#c4b5fd', '#e879f9', '#a78bfa'][Math.floor(Math.random() * 3)];
-            bgLayer.appendChild(dot);
-        }
-
-        const container = document.getElementById('three-container');
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 40);
-        camera.position.set(0, 0.15, 5.8);
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 5);
 
-        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, powerPreference: 'high-performance' });
+        const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(1);
-        renderer.setClearColor(0x020010, 1);
-        container.appendChild(renderer.domElement);
+        renderer.setClearColor(0x020008, 1);
+        document.getElementById('three-container').appendChild(renderer.domElement);
 
-        function createNebulaTexture() {
-            const canvas = document.createElement('canvas');
-            canvas.width = 512; canvas.height = 256;
-            const ctx = canvas.getContext('2d');
-            ctx.fillStyle = '#020010'; ctx.fillRect(0, 0, 512, 256);
-            for (let i = 0; i < 300; i++) {
-                const sx = Math.random() * 512, sy = Math.random() * 256, sr = Math.random() * 1.2;
-                ctx.fillStyle = `rgba(220, 200, 255, ${Math.random() * 0.7})`;
-                ctx.beginPath(); ctx.arc(sx, sy, sr, 0, Math.PI * 2); ctx.fill();
+        function heartImplicit(x, y, z) {
+            const x2 = x*x, y2 = y*y, z2 = z*z;
+            return Math.pow(x2 + 2.25*y2 + z2 - 1, 3) - x2*z2*z - 0.1125*y2*z2*z;
+        }
+
+        const positions = [], colors = [];
+        for (let i = 0; i < 40000; i++) {
+            const x = Math.random()*3-1.5, y = Math.random()*2-1, z = Math.random()*3-1.5;
+            if (heartImplicit(x, y, z) < 0) {
+                positions.push(x, z, y);
+                colors.push(0.8, 0.2, 0.5);
             }
-            return new THREE.CanvasTexture(canvas);
         }
+        const heartGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
+        heartGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 3));
+        const heart = new THREE.Points(heartGeo, new THREE.PointsMaterial({ size: 0.03, vertexColors: true, transparent: true, opacity: 0.8 }));
+        scene.add(heart);
 
-        const skyGeo = new THREE.SphereGeometry(18, 24, 12);
-        const skyMat = new THREE.MeshBasicMaterial({ map: createNebulaTexture(), side: THREE.BackSide, depthWrite: false });
-        scene.add(new THREE.Mesh(skyGeo, skyMat));
-
-        function heartImplicitDistance(x, y, z) {
-            const x2 = x * x, y2 = y * y, z2 = z * z, z3 = z2 * z;
-            const a = x2 + 2.25 * y2 + z2 - 1.0;
-            return a * a * a - x2 * z3 - 0.1125 * y2 * z3;
+        const starsPos = [];
+        for (let i = 0; i < 500; i++) {
+            const r = 10 + Math.random()*20, t = Math.random()*Math.PI*2, p = Math.random()*Math.PI;
+            starsPos.push(Math.cos(t)*Math.sin(p)*r, Math.cos(p)*r, Math.sin(t)*Math.sin(p)*r);
         }
-
-        function sampleHeartSurface(targetCount, isInner = false) {
-            const positions = [], colors = [];
-            let count = 0;
-            for (let i = 0; i < targetCount * 20 && count < targetCount; i++) {
-                const x = Math.random() * 3 - 1.5, y = Math.random() * 2 - 1.0, z = Math.random() * 3 - 1.5;
-                const d = heartImplicitDistance(x, y, z);
-                if ((isInner && d < -0.1 && Math.random() < 0.1) || (!isInner && Math.abs(d) < 0.05)) {
-                    positions.push(x, z, y);
-                    const h = (z + 1) / 2;
-                    colors.push(0.5 + h * 0.5, 0.1, 0.6 + h * 0.4);
-                    count++;
-                }
-            }
-            return { positions: new Float32Array(positions), colors: new Float32Array(colors), count };
-        }
-
-        const heartGroup = new THREE.Group();
-        const glowTex = (() => {
-            const c = document.createElement('canvas'); c.width = 64; c.height = 64;
-            const ctx = c.getContext('2d');
-            const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-            g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 64);
-            return new THREE.CanvasTexture(c);
-        })();
-
-        const heartData = sampleHeartSurface(15000, false);
-        const heartGeo = new THREE.BufferGeometry();
-        heartGeo.setAttribute('position', new THREE.BufferAttribute(heartData.positions, 3));
-        heartGeo.setAttribute('color', new THREE.BufferAttribute(heartData.colors, 3));
-        heartGroup.add(new THREE.Points(heartGeo, new THREE.PointsMaterial({ size: 0.04, map: glowTex, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8 })));
-
-        const innerData = sampleHeartSurface(4000, true);
-        const innerGeo = new THREE.BufferGeometry();
-        innerGeo.setAttribute('position', new THREE.BufferAttribute(innerData.positions, 3));
-        innerGeo.setAttribute('color', new THREE.BufferAttribute(innerData.colors, 3));
-        heartGroup.add(new THREE.Points(innerGeo, new THREE.PointsMaterial({ size: 0.06, map: glowTex, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.3 })));
-        scene.add(heartGroup);
-
-        const orbitDustCount = 600;
-        const orbitPosArr = [];
-        for (let i = 0; i < orbitDustCount; i++) {
-            const r = 1.5 + Math.random() * 2.5, t = Math.random() * Math.PI * 2, p = Math.random() * Math.PI;
-            orbitPosArr.push(Math.cos(t)*Math.sin(p)*r, Math.cos(p)*r*0.5, Math.sin(t)*Math.sin(p)*r);
-        }
-        const orbitPoints = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPosArr), 3)), new THREE.PointsMaterial({ size: 0.02, color: 0xaa44ff, transparent: true, opacity: 0.5 }));
-        scene.add(orbitPoints);
+        scene.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(starsPos), 3)), new THREE.PointsMaterial({ size: 0.05, color: 0xffffff })));
 
         const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; controls.autoRotate = true; controls.autoRotateSpeed = 0.5;
+        controls.enableDamping = true; controls.autoRotate = true;
 
-        const modalOverlay = document.getElementById('modalOverlay'), btnOpen = document.getElementById('btnOpenLetter'), btnClose = document.getElementById('btnCloseLetter');
-        btnOpen.onclick = () => modalOverlay.classList.add('active');
-        btnClose.onclick = () => modalOverlay.classList.remove('active');
+        const modal = document.getElementById('modalOverlay');
+        document.getElementById('btnOpenLetter').onclick = () => modal.classList.add('active');
+        document.getElementById('btnCloseLetter').onclick = () => modal.classList.remove('active');
         window.onresize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
 
-        const clock = new THREE.Clock();
         function animate() {
             requestAnimationFrame(animate);
-            const elapsed = clock.getElapsedTime();
             controls.update();
-            heartGroup.scale.setScalar(1 + Math.sin(elapsed * 0.8) * 0.03);
-            orbitPoints.rotation.y = elapsed * 0.1;
             renderer.render(scene, camera);
         }
         animate();
