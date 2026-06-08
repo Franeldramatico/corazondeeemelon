@@ -14,41 +14,49 @@
         .ui-overlay { position: fixed; bottom: 0; left: 0; width: 100%; z-index: 10; display: flex; flex-direction: column; align-items: center; padding-bottom: 30px; pointer-events: none; }
         .love-text {
             font-family: 'Great Vibes', cursive;
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 6vw, 4.5rem);
             color: #fff;
-            text-shadow: 0 0 10px rgba(216, 70, 239, 0.8), 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 0 15px rgba(167, 139, 250, 0.9), 0 2px 5px rgba(0,0,0,0.7);
             text-align: center;
-            margin-bottom: 20px;
-            padding: 0 10px;
+            margin-bottom: 25px;
+            padding: 0 15px;
+            letter-spacing: 1px;
         }
         .btn-open-letter {
             pointer-events: all; cursor: pointer;
-            font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 1rem;
-            color: #fff; background: #7c3aed;
-            border: none; padding: 12px 24px; border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
+            font-family: 'Raleway', sans-serif; font-weight: 500; font-size: 1.1rem;
+            color: #fff; background: linear-gradient(135deg, #6d28d9, #a855f7);
+            border: none; padding: 14px 28px; border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(109, 40, 217, 0.4);
+            transition: all 0.3s ease;
         }
+        .btn-open-letter:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(109, 40, 217, 0.6); }
         .btn-open-letter:active { transform: scale(0.95); }
-        .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+        
+        .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.4s; }
         .modal-overlay.active { opacity: 1; pointer-events: all; }
-        .letter-card { background: #110022; border: 1px solid #442266; border-radius: 20px; padding: 30px; max-width: 450px; width: 90%; text-align: center; color: #fff; }
-        .letter-title { font-size: 1.5rem; margin-bottom: 15px; color: #f472b6; }
-        .letter-message { font-size: 1rem; line-height: 1.6; margin-bottom: 15px; font-weight: 300; }
-        .btn-close-letter { margin-top: 15px; padding: 8px 20px; border-radius: 20px; border: 1px solid #664488; background: transparent; color: #fff; cursor: pointer; }
+        .letter-card { background: linear-gradient(145deg, #1a0033, #0a001a); border: 1px solid #5b21b6; border-radius: 25px; padding: 40px; max-width: 500px; width: 90%; text-align: center; color: #fff; box-shadow: 0 0 40px rgba(139, 92, 246, 0.3); }
+        .letter-title { font-family: 'Great Vibes', cursive; font-size: 2.5rem; margin-bottom: 20px; color: #d8b4fe; }
+        .letter-message { font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; font-weight: 300; color: #e9d5ff; }
+        .btn-close-letter { margin-top: 15px; padding: 10px 25px; border-radius: 25px; border: 1px solid #8b5cf6; background: rgba(139, 92, 246, 0.1); color: #ddd; cursor: pointer; transition: all 0.3s; }
+        .btn-close-letter:hover { background: rgba(139, 92, 246, 0.3); color: #fff; }
     </style>
 </head>
 <body>
     <div id="three-container"></div>
     <div class="ui-overlay">
         <h1 class="love-text">Te amo mucho araxnita</h1>
-        <button class="btn-open-letter" id="btnOpenLetter">Abrir carta ❤️</button>
+        <button class="btn-open-letter" id="btnOpenLetter">Abrir nuestra carta 💜</button>
     </div>
     <div class="modal-overlay" id="modalOverlay">
         <div class="letter-card">
             <div class="letter-title">Mi amor, araxnita</div>
-            <p class="letter-message">Este aniversario es solo el primero de muchísimos más juntos. Cada día a tu lado es un regalo.</p>
-            <button class="btn-close-letter" id="btnCloseLetter">Cerrar</button>
+            <p class="letter-message">
+                Este aniversario es solo el primero de muchísimos más que viviremos juntos.
+                <br><br>
+                Cada día a tu lado es un regalo, y nuestro amor es tan especial que trasciende el tiempo. Gracias por llenar mi vida de luz.
+            </p>
+            <button class="btn-close-letter" id="btnCloseLetter">Cerrar con amor</button>
         </div>
     </div>
 
@@ -60,55 +68,141 @@
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+        const camera = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 0.1, 100);
         camera.position.set(0, 0, 5);
 
         const renderer = new THREE.WebGLRenderer({ antialias: false, powerPreference: 'high-performance' });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(1);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
         renderer.setClearColor(0x020008, 1);
         document.getElementById('three-container').appendChild(renderer.domElement);
 
+        // --- FONDO DE NEBULOSA MEJORADO ---
+        function createNebulaTexture() {
+            const canvas = document.createElement('canvas');
+            canvas.width = 1024; canvas.height = 512;
+            const ctx = canvas.getContext('2d');
+            
+            // Fondo oscuro profundo
+            const grad = ctx.createLinearGradient(0, 0, 0, 512);
+            grad.addColorStop(0, '#02000a');
+            grad.addColorStop(0.5, '#050015');
+            grad.addColorStop(1, '#02000a');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, 1024, 512);
+
+            // Nubes de nebulosa suaves
+            function drawCloud(x, y, radius, color) {
+                const cloudGrad = ctx.createRadialGradient(x, y, 0, x, y, radius);
+                cloudGrad.addColorStop(0, color);
+                cloudGrad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = cloudGrad;
+                ctx.globalAlpha = 0.4;
+                ctx.fillRect(x - radius, y - radius, radius * 2, radius * 2);
+            }
+
+            drawCloud(200, 150, 250, 'rgba(88, 28, 135, 0.5)'); // Púrpura oscuro
+            drawCloud(800, 350, 300, 'rgba(109, 40, 217, 0.4)'); // Violeta
+            drawCloud(500, 250, 200, 'rgba(147, 51, 234, 0.3)'); // Púrpura claro
+            drawCloud(100, 400, 150, 'rgba(76, 29, 149, 0.4)'); // Índigo
+
+            // Estrellas pequeñas y brillantes
+            ctx.globalAlpha = 1;
+            for (let i = 0; i < 800; i++) {
+                const sx = Math.random() * 1024;
+                const sy = Math.random() * 512;
+                const size = Math.random() * 1.2;
+                const brightness = Math.random();
+                ctx.fillStyle = `rgba(255, 255, 255, ${brightness})`;
+                ctx.beginPath();
+                ctx.arc(sx, sy, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            const texture = new THREE.CanvasTexture(canvas);
+            texture.colorSpace = THREE.SRGBColorSpace;
+            return texture;
+        }
+
+        const skyGeo = new THREE.SphereGeometry(30, 32, 24);
+        const skyMat = new THREE.MeshBasicMaterial({ 
+            map: createNebulaTexture(), 
+            side: THREE.BackSide,
+            depthWrite: false 
+        });
+        const sky = new THREE.Mesh(skyGeo, skyMat);
+        scene.add(sky);
+
+        // --- CORAZÓN MORADO ---
         function heartImplicit(x, y, z) {
             const x2 = x*x, y2 = y*y, z2 = z*z;
             return Math.pow(x2 + 2.25*y2 + z2 - 1, 3) - x2*z2*z - 0.1125*y2*z2*z;
         }
 
         const positions = [], colors = [];
-        for (let i = 0; i < 40000; i++) {
+        for (let i = 0; i < 35000; i++) {
             const x = Math.random()*3-1.5, y = Math.random()*2-1, z = Math.random()*3-1.5;
             if (heartImplicit(x, y, z) < 0) {
                 positions.push(x, z, y);
-                // Colores morados/violetas
-                const r = 0.5 + Math.random() * 0.2;
-                const g = 0.1;
-                const b = 0.8 + Math.random() * 0.2;
+                // Paleta de morados y púrpuras
+                const r = 0.4 + Math.random() * 0.3;
+                const g = 0.1 + Math.random() * 0.1;
+                const b = 0.7 + Math.random() * 0.3;
                 colors.push(r, g, b);
             }
         }
         const heartGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
         heartGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(colors), 3));
-        const heart = new THREE.Points(heartGeo, new THREE.PointsMaterial({ size: 0.03, vertexColors: true, transparent: true, opacity: 0.8 }));
+        
+        // Textura de brillo para los puntos
+        const dotTex = (() => {
+            const c = document.createElement('canvas'); c.width = 64; c.height = 64;
+            const ctx = c.getContext('2d');
+            const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+            g.addColorStop(0, 'white'); g.addColorStop(1, 'transparent');
+            ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 64);
+            return new THREE.CanvasTexture(c);
+        })();
+
+        const heart = new THREE.Points(heartGeo, new THREE.PointsMaterial({ 
+            size: 0.05, 
+            vertexColors: true, 
+            transparent: true, 
+            opacity: 0.9,
+            map: dotTex,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+        }));
         scene.add(heart);
 
-        const starsPos = [];
-        for (let i = 0; i < 500; i++) {
-            const r = 10 + Math.random()*20, t = Math.random()*Math.PI*2, p = Math.random()*Math.PI;
-            starsPos.push(Math.cos(t)*Math.sin(p)*r, Math.cos(p)*r, Math.sin(t)*Math.sin(p)*r);
-        }
-        scene.add(new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(starsPos), 3)), new THREE.PointsMaterial({ size: 0.05, color: 0xffffff })));
-
+        // Controles y Animación
         const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true; controls.autoRotate = true;
+        controls.enableDamping = true; 
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
 
         const modal = document.getElementById('modalOverlay');
         document.getElementById('btnOpenLetter').onclick = () => modal.classList.add('active');
         document.getElementById('btnCloseLetter').onclick = () => modal.classList.remove('active');
-        window.onresize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
+        window.onresize = () => { 
+            camera.aspect = window.innerWidth / window.innerHeight; 
+            camera.updateProjectionMatrix(); 
+            renderer.setSize(window.innerWidth, window.innerHeight); 
+        };
 
+        const clock = new THREE.Clock();
         function animate() {
             requestAnimationFrame(animate);
+            const elapsed = clock.getElapsedTime();
             controls.update();
+            
+            // Latido suave
+            const s = 1 + Math.sin(elapsed * 1.5) * 0.03;
+            heart.scale.set(s, s, s);
+            
+            // Rotación suave del fondo para dar vida
+            sky.rotation.y = elapsed * 0.02;
+            
             renderer.render(scene, camera);
         }
         animate();
