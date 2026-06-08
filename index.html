@@ -79,7 +79,11 @@
             const x = Math.random()*3-1.5, y = Math.random()*2-1, z = Math.random()*3-1.5;
             if (heartImplicit(x, y, z) < 0) {
                 positions.push(x, z, y);
-                colors.push(0.8, 0.2, 0.5);
+                // Colores morados/violetas
+                const r = 0.5 + Math.random() * 0.2;
+                const g = 0.1;
+                const b = 0.8 + Math.random() * 0.2;
+                colors.push(r, g, b);
             }
         }
         const heartGeo = new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(positions), 3));
