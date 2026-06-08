@@ -109,41 +109,21 @@
             animation: pulseText 3s infinite;
         }
         @keyframes pulseText {
-            0%,
-            100% {
-                opacity: 0.4;
-            }
-            50% {
-                opacity: 1;
-            }
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
         }
 
         .love-text {
             font-family: 'Great Vibes', cursive;
             font-size: clamp(2.6rem, 6.5vw, 5.2rem);
             color: #fdf2ff;
-            text-shadow:
-                0 0 40px rgba(216, 70, 239, 0.9),
-                0 0 75px rgba(147, 51, 234, 0.65),
-                0 0 130px rgba(109, 40, 217, 0.5),
-                0 0 200px rgba(192, 38, 211, 0.35),
-                0 4px 8px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 20px rgba(216, 70, 239, 0.8), 0 0 40px rgba(147, 51, 234, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7);
             letter-spacing: 0.04em;
             text-align: center;
             line-height: 1.15;
             margin-bottom: clamp(16px, 2.2vh, 26px);
-            animation: textShimmer 3.4s ease-in-out infinite;
             pointer-events: none;
             padding: 0 20px;
-        }
-        @keyframes textShimmer {
-            0%,
-            100% {
-                text-shadow: 0 0 40px rgba(216, 70, 239, 0.9), 0 0 75px rgba(147, 51, 234, 0.65), 0 0 130px rgba(109, 40, 217, 0.5), 0 0 200px rgba(192, 38, 211, 0.35), 0 4px 8px rgba(0, 0, 0, 0.7);
-            }
-            50% {
-                text-shadow: 0 0 60px rgba(236, 110, 255, 0.95), 0 0 100px rgba(167, 70, 245, 0.8), 0 0 160px rgba(124, 58, 237, 0.65), 0 0 240px rgba(216, 100, 240, 0.5), 0 4px 8px rgba(0, 0, 0, 0.7);
-            }
         }
 
         .btn-open-letter {
@@ -155,155 +135,79 @@
             font-size: clamp(1rem, 1.6vw, 1.2rem);
             letter-spacing: 0.08em;
             color: #fff;
-            background: linear-gradient(135deg, #5b21b6 0%, #7c3aed 25%, #a855f7 45%, #d946ef 65%, #8b5cf6 85%, #5b21b6 100%);
-            background-size: 300% 300%;
+            background: linear-gradient(135deg, #5b21b6 0%, #a855f7 50%, #5b21b6 100%);
+            background-size: 200% 200%;
             border: 1px solid rgba(196, 181, 253, 0.5);
             padding: clamp(14px, 2vh, 18px) clamp(32px, 5vw, 48px);
             border-radius: 50px;
-            box-shadow: 0 0 45px rgba(124, 58, 237, 0.7), 0 0 80px rgba(192, 38, 211, 0.4), 0 0 130px rgba(109, 40, 217, 0.25), 0 12px 32px rgba(0, 0, 0, 0.6);
-            transition: all 0.45s cubic-bezier(0.25, 0.8, 0.25, 1.2);
-            animation: btnGlowPulse 3s ease-in-out infinite, gradientShift 5s ease infinite;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.6), 0 10px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            animation: gradientShift 5s ease infinite;
             z-index: 20;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .btn-open-letter i {
-            font-size: 1.1em;
-            color: #fdf2ff;
-            animation: iconSparkle 2s ease-in-out infinite;
-        }
-        @keyframes iconSparkle {
-            0%,
-            100% {
-                opacity: 0.7;
-                transform: scale(1);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.3);
-            }
-        }
+        .btn-open-letter i { font-size: 1.1em; color: #fdf2ff; }
         .btn-open-letter:hover {
-            transform: translateY(-4px) scale(1.07);
-            box-shadow: 0 0 65px rgba(147, 51, 234, 0.85), 0 0 120px rgba(216, 70, 239, 0.6), 0 0 170px rgba(124, 58, 237, 0.4), 0 16px 42px rgba(0, 0, 0, 0.7);
-            letter-spacing: 0.12em;
-            border-color: rgba(232, 180, 254, 0.8);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 0 45px rgba(147, 51, 234, 0.8), 0 12px 25px rgba(0, 0, 0, 0.6);
         }
-        .btn-open-letter:active {
-            transform: scale(0.95);
-            transition: all 0.12s ease;
-            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5), 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        @keyframes btnGlowPulse {
-            0%,
-            100% {
-                box-shadow: 0 0 45px rgba(124, 58, 237, 0.7), 0 0 80px rgba(192, 38, 211, 0.4), 0 0 130px rgba(109, 40, 217, 0.25), 0 12px 32px rgba(0, 0, 0, 0.6);
-            }
-            50% {
-                box-shadow: 0 0 60px rgba(147, 51, 234, 0.85), 0 0 110px rgba(216, 70, 239, 0.55), 0 0 160px rgba(124, 58, 237, 0.4), 0 12px 32px rgba(0, 0, 0, 0.6);
-            }
-        }
+        .btn-open-letter:active { transform: scale(0.97); }
+
         @keyframes gradientShift {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            25% {
-                background-position: 100% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            75% {
-                background-position: 0% 100%;
-            }
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
         }
 
         .modal-overlay {
             position: fixed;
             inset: 0;
             z-index: 100;
-            background: rgba(2, 0, 8, 0.9);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            background: rgba(2, 0, 8, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.55s ease;
+            transition: opacity 0.4s ease;
         }
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: all;
-        }
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
 
         .letter-card {
-            background: linear-gradient(170deg, #1e0a35 0%, #150a28 35%, #0a001c 100%);
-            border: 1.5px solid rgba(196, 181, 253, 0.45);
-            border-radius: 28px;
-            padding: clamp(28px, 3.8vw, 44px) clamp(24px, 3.2vw, 40px);
-            max-width: 550px;
+            background: #0a001c;
+            border: 1px solid rgba(196, 181, 253, 0.3);
+            border-radius: 24px;
+            padding: clamp(24px, 3.5vw, 40px);
+            max-width: 500px;
             width: 92%;
             text-align: center;
             position: relative;
-            box-shadow: 0 0 100px rgba(124, 58, 237, 0.5), 0 0 200px rgba(192, 38, 211, 0.3), 0 40px 80px rgba(0, 0, 0, 0.8);
-            transform: scale(0.65) translateY(50px);
-            transition: transform 0.65s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+            box-shadow: 0 0 60px rgba(124, 58, 237, 0.4);
+            transform: scale(0.9) translateY(20px);
+            transition: transform 0.4s ease, opacity 0.4s ease;
             opacity: 0;
         }
-        .modal-overlay.active .letter-card {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
+        .modal-overlay.active .letter-card { transform: scale(1) translateY(0); opacity: 1; }
+        
         .letter-card::before {
             content: '';
             position: absolute;
-            inset: -2px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #7c3aed, #d946ef, #a78bfa, #f472b6, #8b5cf6);
-            background-size: 300% 300%;
+            inset: -1px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #7c3aed, #d946ef);
             z-index: -1;
-            animation: gradientShift 4s ease infinite;
-            opacity: 0.6;
-            filter: blur(8px);
+            opacity: 0.4;
         }
-        .letter-card::after {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 30px;
-            right: 30px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(245, 208, 254, 0.8), transparent);
-            border-radius: 50%;
-        }
+
         .letter-icon-wrap {
             display: inline-block;
             font-size: clamp(2.4rem, 5vw, 3.4rem);
             margin-bottom: 12px;
-            animation: heartBeatIcon 1.3s ease-in-out infinite;
             color: #f472b6;
-            filter: drop-shadow(0 0 20px rgba(216, 70, 239, 0.8));
-        }
-        @keyframes heartBeatIcon {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            14% {
-                transform: scale(1.3);
-            }
-            28% {
-                transform: scale(1);
-            }
-            42% {
-                transform: scale(1.22);
-            }
-            56% {
-                transform: scale(1);
-            }
+            filter: drop-shadow(0 0 10px rgba(216, 70, 239, 0.8));
         }
         .letter-title {
             font-family: 'Playfair Display', serif;
@@ -311,69 +215,41 @@
             color: #fdf2ff;
             margin-bottom: 16px;
             font-weight: 600;
-            letter-spacing: 0.05em;
         }
         .letter-message {
             font-family: 'Raleway', sans-serif;
             font-size: clamp(1rem, 1.6vw, 1.2rem);
             color: #e2d4f5;
-            line-height: 1.9;
+            line-height: 1.8;
             font-weight: 300;
-            letter-spacing: 0.03em;
             margin-bottom: 8px;
         }
-        .letter-message strong {
-            color: #f472b6;
-            font-weight: 500;
-        }
+        .letter-message strong { color: #f472b6; font-weight: 500; }
         .letter-signature {
             font-family: 'Great Vibes', cursive;
             font-size: clamp(1.6rem, 3vw, 2.2rem);
             color: #fdf2ff;
             margin-top: 20px;
-            opacity: 0.9;
         }
         .btn-close-letter {
             margin-top: 22px;
             padding: 10px 28px;
             border-radius: 30px;
-            border: 1.5px solid rgba(196, 181, 253, 0.55);
+            border: 1px solid rgba(196, 181, 253, 0.4);
             background: rgba(124, 58, 237, 0.2);
             color: #e2d4f5;
-            font-family: 'Raleway', sans-serif;
-            font-size: 0.95rem;
             cursor: pointer;
-            letter-spacing: 0.06em;
             transition: all 0.3s ease;
-            pointer-events: all;
         }
-        .btn-close-letter:hover {
-            background: rgba(124, 58, 237, 0.5);
-            border-color: #d946ef;
-            color: #fff;
-            box-shadow: 0 0 30px rgba(192, 38, 211, 0.5);
-            transform: translateY(-2px);
-        }
+        .btn-close-letter:hover { background: rgba(124, 58, 237, 0.4); color: #fff; }
 
         @media (max-width: 600px) {
-            .love-text {
-                font-size: 2.2rem;
-                margin-bottom: 14px;
-            }
-            .btn-open-letter {
-                padding: 12px 26px;
-                font-size: 0.9rem;
-                gap: 8px;
-            }
-            .letter-card {
-                padding: 22px 18px;
-                border-radius: 22px;
-            }
+            .love-text { font-size: 2.2rem; }
+            .btn-open-letter { padding: 12px 26px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-
     <div class="bg-particles-layer" id="bgParticlesLayer"></div>
     <div id="three-container"></div>
 
@@ -387,9 +263,7 @@
 
     <div class="modal-overlay" id="modalOverlay">
         <div class="letter-card">
-            <div class="letter-icon-wrap">
-                <i class="fa-solid fa-heart-circle-plus"></i>
-            </div>
+            <div class="letter-icon-wrap"><i class="fa-solid fa-heart-circle-plus"></i></div>
             <div class="letter-title">Mi amor, araxnita</div>
             <p class="letter-message">
                 Este aniversario es <strong>solo el primero</strong> de muchísimos más que viviremos juntos.
@@ -399,9 +273,7 @@
                 Gracias por ser quien eres y por llenar mi vida de luz.
             </p>
             <div class="letter-signature">Con todo mi amor</div>
-            <button class="btn-close-letter" id="btnCloseLetter">
-                <i class="fa-solid fa-xmark"></i> Cerrar carta
-            </button>
+            <button class="btn-close-letter" id="btnCloseLetter"><i class="fa-solid fa-xmark"></i> Cerrar carta</button>
         </div>
     </div>
 
@@ -418,423 +290,117 @@
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-        // ============ PARTÍCULAS DE FONDO CSS (brillo flotante) ============
         const bgLayer = document.getElementById('bgParticlesLayer');
-        const bgDotCount = 35; // reducido para performance
+        const bgDotCount = 20; 
         for (let i = 0; i < bgDotCount; i++) {
             const dot = document.createElement('div');
             dot.classList.add('bg-dot');
-            const size = Math.random() * 3.5 + 1.5;
-            dot.style.width = size + 'px';
-            dot.style.height = size + 'px';
+            const size = Math.random() * 3 + 1;
+            dot.style.width = size + 'px'; dot.style.height = size + 'px';
             dot.style.left = Math.random() * 100 + '%';
-            dot.style.animationDuration = Math.random() * 18 + 10 + 's';
-            dot.style.animationDelay = Math.random() * 14 + 's';
-            const hue = ['#c4b5fd', '#e879f9', '#f472b6', '#a78bfa', '#d946ef', '#c084fc'][Math.floor(Math.random() * 6)];
-            dot.style.background = hue;
-            dot.style.boxShadow = `0 0 ${5 + Math.random()*8}px ${hue}`;
+            dot.style.animationDuration = Math.random() * 15 + 10 + 's';
+            dot.style.animationDelay = Math.random() * 10 + 's';
+            dot.style.background = ['#c4b5fd', '#e879f9', '#a78bfa'][Math.floor(Math.random() * 3)];
             bgLayer.appendChild(dot);
         }
 
-        // ============ THREE.JS SETUP ============
         const container = document.getElementById('three-container');
         const scene = new THREE.Scene();
-
-        const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.08, 40);
+        const camera = new THREE.PerspectiveCamera(52, window.innerWidth / window.innerHeight, 0.1, 40);
         camera.position.set(0, 0.15, 5.8);
 
-        const renderer = new THREE.WebGLRenderer({ 
-            antialias: false, 
-            alpha: false, 
-            powerPreference: 'high-performance' 
-        });
+        const renderer = new THREE.WebGLRenderer({ antialias: false, alpha: false, powerPreference: 'high-performance' });
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(1); 
+        renderer.setPixelRatio(1);
         renderer.setClearColor(0x020010, 1);
-        renderer.outputColorSpace = THREE.SRGBColorSpace;
         container.appendChild(renderer.domElement);
 
-        // ============ FONDO DE NEBULOSA GALÁCTICA (textura más pequeña) ============
         function createNebulaTexture() {
             const canvas = document.createElement('canvas');
-            canvas.width = 1024;  // reducido
-            canvas.height = 512;
+            canvas.width = 512; canvas.height = 256;
             const ctx = canvas.getContext('2d');
-
-            const bgGrad = ctx.createRadialGradient(512, 256, 50, 512, 256, 700);
-            bgGrad.addColorStop(0, '#1a0030');
-            bgGrad.addColorStop(0.35, '#0d0020');
-            bgGrad.addColorStop(0.7, '#050010');
-            bgGrad.addColorStop(1, '#000008');
-            ctx.fillStyle = bgGrad;
-            ctx.fillRect(0, 0, 1024, 512);
-
-            const nebulaColors = [
-                { x: 300, y: 200, r: 140, c1: 'rgba(130,50,200,0.25)', c2: 'rgba(200,80,220,0.08)' },
-                { x: 700, y: 150, r: 170, c1: 'rgba(180,40,160,0.28)', c2: 'rgba(100,30,180,0.06)' },
-                { x: 500, y: 300, r: 125, c1: 'rgba(100,60,210,0.22)', c2: 'rgba(220,100,200,0.07)' },
-                { x: 150, y: 100, r: 100, c1: 'rgba(160,50,190,0.2)', c2: 'rgba(80,20,150,0.05)' },
-                { x: 850, y: 250, r: 110, c1: 'rgba(140,45,180,0.22)', c2: 'rgba(190,70,210,0.06)' },
-                { x: 400, y: 400, r: 150, c1: 'rgba(120,55,200,0.18)', c2: 'rgba(150,40,170,0.04)' },
-            ];
-            nebulaColors.forEach(n => {
-                const grad = ctx.createRadialGradient(n.x, n.y, 10, n.x, n.y, n.r);
-                grad.addColorStop(0, n.c1);
-                grad.addColorStop(0.5, n.c2);
-                grad.addColorStop(1, 'rgba(0,0,0,0)');
-                ctx.fillStyle = grad;
-                ctx.fillRect(0, 0, 1024, 512);
-            });
-
-            for (let i = 0; i < 900; i++) {
-                const sx = Math.random() * 1024;
-                const sy = Math.random() * 512;
-                const sr = Math.random() * 2 + 0.4;
-                const alpha = Math.random() * 0.85 + 0.2;
-                const hue = Math.random() < 0.1 ? `rgba(255,220,255,${alpha})` : `rgba(220,200,255,${alpha})`;
-                ctx.beginPath();
-                ctx.arc(sx, sy, sr, 0, Math.PI * 2);
-                ctx.fillStyle = hue;
-                ctx.fill();
-                if (Math.random() < 0.15) {
-                    ctx.shadowColor = 'rgba(200,180,255,0.8)';
-                    ctx.shadowBlur = 3;
-                    ctx.fill();
-                    ctx.shadowBlur = 0;
-                }
+            ctx.fillStyle = '#020010'; ctx.fillRect(0, 0, 512, 256);
+            for (let i = 0; i < 300; i++) {
+                const sx = Math.random() * 512, sy = Math.random() * 256, sr = Math.random() * 1.2;
+                ctx.fillStyle = `rgba(220, 200, 255, ${Math.random() * 0.7})`;
+                ctx.beginPath(); ctx.arc(sx, sy, sr, 0, Math.PI * 2); ctx.fill();
             }
-
-            const texture = new THREE.CanvasTexture(canvas);
-            texture.wrapS = THREE.RepeatWrapping;
-            texture.wrapU = THREE.RepeatWrapping;
-            texture.colorSpace = THREE.SRGBColorSpace;
-            texture.minFilter = THREE.LinearMipmapLinearFilter;
-            texture.magFilter = THREE.LinearFilter;
-            texture.generateMipmaps = true;
-            return texture;
+            return new THREE.CanvasTexture(canvas);
         }
 
-        const skyGeo = new THREE.SphereGeometry(18, 48, 24); // menor geometría
-        const skyMat = new THREE.MeshBasicMaterial({
-            map: createNebulaTexture(),
-            side: THREE.BackSide,
-            depthWrite: false,
-            depthTest: false,
-        });
-        const skySphere = new THREE.Mesh(skyGeo, skyMat);
-        skySphere.renderOrder = -1;
-        scene.add(skySphere);
+        const skyGeo = new THREE.SphereGeometry(18, 24, 12);
+        const skyMat = new THREE.MeshBasicMaterial({ map: createNebulaTexture(), side: THREE.BackSide, depthWrite: false });
+        scene.add(new THREE.Mesh(skyGeo, skyMat));
 
-        // Brillo central
-        const coreGlowGeo = new THREE.SphereGeometry(1.6, 16, 16);
-        const coreGlowMat = new THREE.ShaderMaterial({
-            uniforms: { uTime: { value: 0 } },
-            vertexShader: /* glsl */ `
-            varying vec3 vPos;
-            varying vec3 vNormal;
-            void main() {
-              vec4 worldPos = modelMatrix * vec4(position, 1.0);
-              vPos = worldPos.xyz;
-              vNormal = normalize(mat3(modelMatrix) * normal);
-              gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-            }`,
-            fragmentShader: /* glsl */ `
-            varying vec3 vPos;
-            varying vec3 vNormal;
-            uniform float uTime;
-            void main() {
-              vec3 viewDir = normalize(cameraPosition - vPos);
-              float fresnel = 1.0 - abs(dot(viewDir, vNormal));
-              fresnel = pow(fresnel, 3.5);
-              float pulse = 0.7 + 0.3 * sin(uTime * 1.5 + vPos.y * 2.0);
-              vec3 color = mix(vec3(0.3, 0.05, 0.5), vec3(0.8, 0.2, 0.7), fresnel * pulse);
-              float alpha = fresnel * 0.45 * pulse;
-              gl_FragColor = vec4(color, alpha);
-            }`,
-            transparent: true,
-            depthWrite: false,
-            depthTest: false,
-            blending: THREE.AdditiveBlending,
-        });
-        const coreGlow = new THREE.Mesh(coreGlowGeo, coreGlowMat);
-        coreGlow.renderOrder = 1;
-        scene.add(coreGlow);
-
-        // ============ CONTROLES ============
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        controls.enablePan = false;
-        controls.minDistance = 0.7;
-        controls.maxDistance = 10;
-        controls.autoRotate = true;
-        controls.autoRotateSpeed = 0.7;
-        controls.target.set(0, 0, 0);
-
-        // ============ TEXTURAS DE BRILLO ============
-        function createGlowTexture(innerColor, outerFade) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 128; // más pequeñas
-            canvas.height = 128;
-            const ctx = canvas.getContext('2d');
-            const gradient = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-            gradient.addColorStop(0, innerColor || 'rgba(255,255,255,1)');
-            gradient.addColorStop(0.04, 'rgba(255,255,255,0.98)');
-            gradient.addColorStop(0.14, 'rgba(250,225,255,0.75)');
-            gradient.addColorStop(0.28, 'rgba(210,160,245,0.35)');
-            gradient.addColorStop(0.5, 'rgba(140,80,220,0.08)');
-            gradient.addColorStop(0.75, 'rgba(60,20,120,0.01)');
-            gradient.addColorStop(1, 'rgba(0,0,0,0)');
-            ctx.fillStyle = gradient;
-            ctx.fillRect(0, 0, 128, 128);
-            const tex = new THREE.CanvasTexture(canvas);
-            tex.needsUpdate = true;
-            return tex;
-        }
-        const glowTexMain = createGlowTexture('rgba(255,255,255,1)');
-        const glowTexSpark = createGlowTexture('rgba(255,255,255,1)');
-        const glowTexSoft = createGlowTexture('rgba(255,240,255,0.9)', 'rgba(200,150,240,0.35)');
-
-        // ============ CORAZÓN MOLECULAR OPTIMIZADO ============
         function heartImplicitDistance(x, y, z) {
             const x2 = x * x, y2 = y * y, z2 = z * z, z3 = z2 * z;
             const a = x2 + 2.25 * y2 + z2 - 1.0;
-            const a2 = a * a;
-            const val = a * a2 - x2 * z3 - 0.1125 * y2 * z3;
-            const dx = 6 * x * a2 - 2 * x * z3;
-            const dy = 13.5 * y * a2 - 0.225 * y * z3;
-            const dz = 6 * z * a2 - 3 * x2 * z2 - 0.3375 * y2 * z2;
-            const gradMag = Math.sqrt(dx * dx + dy * dy + dz * dz);
-            return val / (gradMag + 0.0001);
+            return a * a * a - x2 * z3 - 0.1125 * y2 * z3;
         }
 
         function sampleHeartSurface(targetCount, isInner = false) {
-            const rawPositions = [];
-            const rawColors = [];
-            const xMin = -1.5, xMax = 1.5;
-            const yMin = -1.0, yMax = 1.0;
-            const zMin = -1.5, zMax = 1.5;
-            const maxIterations = targetCount * 120; // menos iteraciones máximas
-            let attempts = 0;
-            const thickness = isInner ? 0.35 : 0.022;
-
-            while (rawPositions.length / 3 < targetCount && attempts < maxIterations) {
-                const ox = xMin + Math.random() * (xMax - xMin);
-                const oy = yMin + Math.random() * (yMax - yMin);
-                const oz = zMin + Math.random() * (zMax - zMin);
-                const dist = heartImplicitDistance(ox, oy, oz);
-                let accept = false;
-                if (isInner) {
-                    if (dist < -0.06 && Math.random() < 0.04) accept = true;
-                } else {
-                    if (Math.abs(dist) < thickness) accept = true;
-                }
-                if (accept) {
-                    const sx = ox, sy = oz, sz = oy;
-                    rawPositions.push(sx, sy, sz);
-                    const heightNorm = (sy + 1.2) / 2.5;
-                    const clampedH = Math.max(0, Math.min(1, heightNorm));
-                    let r, g, b;
-                    if (clampedH > 0.6) {
-                        const t = (clampedH - 0.6) / 0.4;
-                        r = 0.82 + t * 0.18; g = 0.22 + t * 0.58; b = 0.92 + t * 0.08;
-                    } else if (clampedH > 0.2) {
-                        const t = (clampedH - 0.2) / 0.4;
-                        r = 0.5 + t * 0.32; g = 0.05 + t * 0.17; b = 0.72 + t * 0.2;
-                    } else {
-                        const t = clampedH / 0.2;
-                        r = 0.22 + t * 0.28; g = 0.0 + t * 0.05; b = 0.42 + t * 0.3;
-                    }
-                    if (Math.random() < 0.05) {
-                        r = Math.min(1, r + 0.35); g = Math.min(1, g + 0.35); b = Math.min(1, b + 0.35);
-                    }
-                    rawColors.push(r, g, b);
-                }
-                attempts++;
-            }
-
-            const minDist = isInner ? 0.06 : 0.025;
-            const minDistSq = minDist * minDist;
-            const totalRaw = rawPositions.length / 3;
-            const keepFlags = new Uint8Array(totalRaw).fill(1);
-            const cellSize = minDist * 1.5;
-            const grid = new Map();
-            const keyFor = (x, y, z) => `${Math.floor(x/cellSize)},${Math.floor(y/cellSize)},${Math.floor(z/cellSize)}`;
-
-            for (let i = 0; i < totalRaw; i++) {
-                const px = rawPositions[i*3], py = rawPositions[i*3+1], pz = rawPositions[i*3+2];
-                const key = keyFor(px, py, pz);
-                if (!grid.has(key)) grid.set(key, []);
-                grid.get(key).push(i);
-            }
-
-            for (let i = 0; i < totalRaw; i++) {
-                if (!keepFlags[i]) continue;
-                const px = rawPositions[i*3], py = rawPositions[i*3+1], pz = rawPositions[i*3+2];
-                const cx = Math.floor(px/cellSize), cy = Math.floor(py/cellSize), cz = Math.floor(pz/cellSize);
-                for (let dx = -1; dx <= 1; dx++) {
-                    for (let dy = -1; dy <= 1; dy++) {
-                        for (let dz = -1; dz <= 1; dz++) {
-                            const nKey = `${cx+dx},${cy+dy},${cz+dz}`;
-                            const neighbors = grid.get(nKey);
-                            if (!neighbors) continue;
-                            for (const j of neighbors) {
-                                if (j <= i || !keepFlags[j]) continue;
-                                const qx = rawPositions[j*3], qy = rawPositions[j*3+1], qz = rawPositions[j*3+2];
-                                const distSq = (px-qx)**2 + (py-qy)**2 + (pz-qz)**2;
-                                if (distSq < minDistSq) keepFlags[j] = 0;
-                            }
-                        }
-                    }
+            const positions = [], colors = [];
+            let count = 0;
+            for (let i = 0; i < targetCount * 20 && count < targetCount; i++) {
+                const x = Math.random() * 3 - 1.5, y = Math.random() * 2 - 1.0, z = Math.random() * 3 - 1.5;
+                const d = heartImplicitDistance(x, y, z);
+                if ((isInner && d < -0.1 && Math.random() < 0.1) || (!isInner && Math.abs(d) < 0.05)) {
+                    positions.push(x, z, y);
+                    const h = (z + 1) / 2;
+                    colors.push(0.5 + h * 0.5, 0.1, 0.6 + h * 0.4);
+                    count++;
                 }
             }
-
-            const filteredPositions = [], filteredColors = [];
-            for (let i = 0; i < totalRaw; i++) {
-                if (keepFlags[i]) {
-                    filteredPositions.push(rawPositions[i*3], rawPositions[i*3+1], rawPositions[i*3+2]);
-                    filteredColors.push(rawColors[i*3], rawColors[i*3+1], rawColors[i*3+2]);
-                }
-            }
-            return {
-                positions: new Float32Array(filteredPositions),
-                colors: new Float32Array(filteredColors),
-                count: filteredPositions.length / 3,
-            };
+            return { positions: new Float32Array(positions), colors: new Float32Array(colors), count };
         }
 
         const heartGroup = new THREE.Group();
+        const glowTex = (() => {
+            const c = document.createElement('canvas'); c.width = 64; c.height = 64;
+            const ctx = c.getContext('2d');
+            const g = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
+            g.addColorStop(0, 'rgba(255,255,255,1)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = g; ctx.fillRect(0, 0, 64, 64);
+            return new THREE.CanvasTexture(c);
+        })();
 
-        // Capa exterior (reducida a 15k objetivo)
         const heartData = sampleHeartSurface(15000, false);
-        const heartGeometry = new THREE.BufferGeometry();
-        heartGeometry.setAttribute('position', new THREE.BufferAttribute(heartData.positions, 3));
-        heartGeometry.setAttribute('color', new THREE.BufferAttribute(heartData.colors, 3));
-        const heartMaterial = new THREE.PointsMaterial({
-            size: 0.04, map: glowTexMain, blending: THREE.AdditiveBlending,
-            depthWrite: false, depthTest: true, transparent: true,
-            vertexColors: true, sizeAttenuation: true, opacity: 0.9,
-        });
-        heartGroup.add(new THREE.Points(heartGeometry, heartMaterial));
+        const heartGeo = new THREE.BufferGeometry();
+        heartGeo.setAttribute('position', new THREE.BufferAttribute(heartData.positions, 3));
+        heartGeo.setAttribute('color', new THREE.BufferAttribute(heartData.colors, 3));
+        heartGroup.add(new THREE.Points(heartGeo, new THREE.PointsMaterial({ size: 0.04, map: glowTex, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.8 })));
 
-        // Capa interior (reducida a 4k)
         const innerData = sampleHeartSurface(4000, true);
-        const innerGeometry = new THREE.BufferGeometry();
-        innerGeometry.setAttribute('position', new THREE.BufferAttribute(innerData.positions, 3));
-        innerGeometry.setAttribute('color', new THREE.BufferAttribute(innerData.colors, 3));
-        const innerMaterial = new THREE.PointsMaterial({
-            size: 0.06, map: glowTexSoft, blending: THREE.AdditiveBlending,
-            depthWrite: false, depthTest: true, transparent: true,
-            vertexColors: true, sizeAttenuation: true, opacity: 0.45,
-        });
-        heartGroup.add(new THREE.Points(innerGeometry, innerMaterial));
-
-        // Destellos (reducidos a 400)
-        const sparkleCount = 400;
-        const sparklePosArr = [], sparkleColArr = [];
-        for (let i = 0; i < sparkleCount; i++) {
-            const idx = Math.floor(Math.random() * heartData.count);
-            const bx = heartData.positions[idx*3], by = heartData.positions[idx*3+1], bz = heartData.positions[idx*3+2];
-            const off = 0.04;
-            sparklePosArr.push(bx + (Math.random()-0.5)*off, by + (Math.random()-0.5)*off, bz + (Math.random()-0.5)*off);
-            sparkleColArr.push(1, 0.75 + Math.random()*0.25, 0.85 + Math.random()*0.15);
-        }
-        const sparkleGeom = new THREE.BufferGeometry();
-        sparkleGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(sparklePosArr), 3));
-        sparkleGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(sparkleColArr), 3));
-        const sparkleMat = new THREE.PointsMaterial({
-            size: 0.08, map: glowTexSpark, blending: THREE.AdditiveBlending,
-            depthWrite: false, depthTest: true, transparent: true,
-            vertexColors: true, sizeAttenuation: true, opacity: 0.85,
-        });
-        heartGroup.add(new THREE.Points(sparkleGeom, sparkleMat));
+        const innerGeo = new THREE.BufferGeometry();
+        innerGeo.setAttribute('position', new THREE.BufferAttribute(innerData.positions, 3));
+        innerGeo.setAttribute('color', new THREE.BufferAttribute(innerData.colors, 3));
+        heartGroup.add(new THREE.Points(innerGeo, new THREE.PointsMaterial({ size: 0.06, map: glowTex, vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.3 })));
         scene.add(heartGroup);
 
-        // ============ POLVO ORBITAL (reducido) ============
-        const orbitDustCount = 800;
-        const orbitPosArr = [], orbitColArr = [];
+        const orbitDustCount = 600;
+        const orbitPosArr = [];
         for (let i = 0; i < orbitDustCount; i++) {
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.random() * Math.PI;
-            const radius = 1.4 + Math.random() * 3.0;
-            orbitPosArr.push(Math.cos(theta) * Math.sin(phi) * radius, Math.cos(phi) * radius * 0.8, Math.sin(theta) * Math.sin(phi) * radius);
-            const bright = 0.2 + Math.random() * 0.6;
-            orbitColArr.push(bright * 0.6, bright * 0.1, bright * 0.55);
+            const r = 1.5 + Math.random() * 2.5, t = Math.random() * Math.PI * 2, p = Math.random() * Math.PI;
+            orbitPosArr.push(Math.cos(t)*Math.sin(p)*r, Math.cos(p)*r*0.5, Math.sin(t)*Math.sin(p)*r);
         }
-        const orbitGeom = new THREE.BufferGeometry();
-        orbitGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPosArr), 3));
-        orbitGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(orbitColArr), 3));
-        const orbitMat = new THREE.PointsMaterial({
-            size: 0.025, map: glowTexSoft, blending: THREE.AdditiveBlending,
-            depthWrite: false, depthTest: false, transparent: true,
-            vertexColors: true, sizeAttenuation: true, opacity: 0.55,
-        });
-        const orbitPoints = new THREE.Points(orbitGeom, orbitMat);
-        orbitPoints.renderOrder = 2;
+        const orbitPoints = new THREE.Points(new THREE.BufferGeometry().setAttribute('position', new THREE.BufferAttribute(new Float32Array(orbitPosArr), 3)), new THREE.PointsMaterial({ size: 0.02, color: 0xaa44ff, transparent: true, opacity: 0.5 }));
         scene.add(orbitPoints);
 
-        // ============ PARTÍCULAS LEJANAS (reducido) ============
-        const farDustCount = 400;
-        const farDustPosArr = [], farDustColArr = [];
-        for (let i = 0; i < farDustCount; i++) {
-            const th = Math.random() * Math.PI * 2;
-            const ph = Math.random() * Math.PI;
-            const rad = 4 + Math.random() * 6;
-            farDustPosArr.push(Math.cos(th)*Math.sin(ph)*rad, Math.cos(ph)*rad*0.75, Math.sin(th)*Math.sin(ph)*rad);
-            const br = 0.15 + Math.random() * 0.5;
-            farDustColArr.push(br*0.7, br*0.18, br*0.65);
-        }
-        const farGeom = new THREE.BufferGeometry();
-        farGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(farDustPosArr), 3));
-        farGeom.setAttribute('color', new THREE.BufferAttribute(new Float32Array(farDustColArr), 3));
-        const farMat = new THREE.PointsMaterial({
-            size: 0.035, map: glowTexSoft, blending: THREE.AdditiveBlending,
-            depthWrite: false, depthTest: false, transparent: true,
-            vertexColors: true, sizeAttenuation: true, opacity: 0.4,
-        });
-        const farPoints = new THREE.Points(farGeom, farMat);
-        farPoints.renderOrder = 0;
-        scene.add(farPoints);
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; controls.autoRotate = true; controls.autoRotateSpeed = 0.5;
 
-        // ============ MODAL ============
-        const modalOverlay = document.getElementById('modalOverlay');
-        const btnOpen = document.getElementById('btnOpenLetter');
-        const btnClose = document.getElementById('btnCloseLetter');
-        btnOpen.addEventListener('click', () => modalOverlay.classList.add('active'));
-        btnClose.addEventListener('click', () => modalOverlay.classList.remove('active'));
-        modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.classList.remove('active'); });
+        const modalOverlay = document.getElementById('modalOverlay'), btnOpen = document.getElementById('btnOpenLetter'), btnClose = document.getElementById('btnCloseLetter');
+        btnOpen.onclick = () => modalOverlay.classList.add('active');
+        btnClose.onclick = () => modalOverlay.classList.remove('active');
+        window.onresize = () => { camera.aspect = window.innerWidth / window.innerHeight; camera.updateProjectionMatrix(); renderer.setSize(window.innerWidth, window.innerHeight); };
 
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
-
-        // ============ ANIMACIÓN ============
         const clock = new THREE.Clock();
-        let timeAccum = 0;
-
         function animate() {
             requestAnimationFrame(animate);
-            const dt = Math.min(clock.getDelta(), 0.12);
-            timeAccum += dt;
+            const elapsed = clock.getElapsedTime();
             controls.update();
-
-            const breathe = 1 + Math.sin(timeAccum * 0.6) * 0.022 + Math.sin(timeAccum * 1.3) * 0.014;
-            heartGroup.scale.setScalar(breathe);
-
-            sparkleMat.opacity = 0.55 + Math.sin(timeAccum * 2.5) * 0.3 + Math.sin(timeAccum * 5.5) * 0.15;
-            heartMaterial.opacity = 0.86 + Math.sin(timeAccum * 0.85) * 0.06;
-            coreGlowMat.uniforms.uTime.value = timeAccum;
-            coreGlow.scale.setScalar(1 + Math.sin(timeAccum * 0.7) * 0.06);
-
-            orbitPoints.rotation.y = timeAccum * 0.12;
-            orbitPoints.rotation.z = Math.sin(timeAccum * 0.1) * 0.05;
-
-            farPoints.rotation.y = timeAccum * 0.018;
-            skySphere.rotation.y = timeAccum * 0.008;
-            skySphere.rotation.x = Math.sin(timeAccum * 0.15) * 0.03;
-
+            heartGroup.scale.setScalar(1 + Math.sin(elapsed * 0.8) * 0.03);
+            orbitPoints.rotation.y = elapsed * 0.1;
             renderer.render(scene, camera);
         }
         animate();
